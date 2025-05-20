@@ -4,8 +4,9 @@ import { useForm } from 'react-hook-form'
 function Form({changeData}) {
     const {register, handleSubmit,reset} = useForm();
     const print=(data)=>{
+        let data_added={...data,isFriend:false}
         console.log(data);
-        changeData(data)
+        changeData(data_added)
         reset();
     }
 

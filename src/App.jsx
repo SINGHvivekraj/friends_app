@@ -5,6 +5,12 @@ import Form from "./components/Form";
 function App() {
   const [data, setData] = React.useState([]);
   const changeData = (newData) => setData([...data, newData]);
+  const changeFriendStatus=(id)=>{
+    setData(data.map((item,index)=>{
+      if(index===id)return {...item, isFriend:!item.isFriend};
+      return item
+    }))
+  }
 
   return (
     <>
@@ -12,7 +18,7 @@ function App() {
 
       <div className="cards  flex justify-center wrap p-4 gap-3">
         {data.map((ele,idx)=>{
-          return <Card key={idx} data={ele}/>
+          return <Card key={idx} data={ele} index={idx} changeFriendStatus={changeFriendStatus}/>
         })}
       </div>
 
